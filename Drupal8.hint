@@ -1,0 +1,19 @@
+send Debug code into log:
+
+\Drupal::logger('some_channel_name')->warning('<pre><code>' . print_r($a, TRUE) . '</code></pre>');
+
+
+function canine_preprocess_views_view_field(&$variables) {
+  $view = $variables['view'];
+  $field = $variables['field'];
+
+  if ($view->id() == 'class' ) {
+    switch ($field->field) {
+      case 'field_sign_up_links':
+        $options = array();        
+        $a = $variables['row']->_entity->get('field_sign_up_links')->getValue();        
+        $variables['output'] = '';      
+        break;
+    }
+  }
+}
