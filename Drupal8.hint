@@ -6,6 +6,19 @@ send Debug code into log:
 \Drupal::messenger()->addMessage('Say something else');
 
 
+
+https://drupal.stackexchange.com/questions/224484/how-to-access-a-selected-label-instead-of-value
+$entity_type_id = 'node';
+$field_name = 'field_state';
+
+$entity_fields_definitions = \Drupal::service('entity_field.manager')->getFieldStorageDefinitions($entity_type_id);
+/** @var \Drupal\Core\Field\FieldStorageDefinitionInterface $field_definition */
+$field_definition = $entity_fields_definitions[$field_name];
+$field_allowed_options = options_allowed_values($field_definition);
+
+
+
+
 function canine_preprocess_views_view_field(&$variables) {
   $view = $variables['view'];
   $field = $variables['field'];
