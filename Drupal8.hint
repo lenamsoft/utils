@@ -33,3 +33,10 @@ function canine_preprocess_views_view_field(&$variables) {
     }
   }
 }
+
+
+Entity : 
+
+- Get value :
+
+$entity->get('field_language_code')->getString();
